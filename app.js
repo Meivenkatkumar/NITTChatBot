@@ -60,6 +60,10 @@ app.get("/chatbot",function(req,res){
   res.render("chat");
 })
 
+app.get("/speechrecog",function(req,res){
+  res.render("speechrecog");
+})
+
 app.listen(3000,()=>{
   console.log("LISTENING IN PORT 3000");
 });
