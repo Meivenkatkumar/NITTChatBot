@@ -2,6 +2,16 @@ $(".person").on('click', function(){
     $(this).toggleClass('focus').siblings().removeClass('focus');
 })
 
+document.getElementById("typing").style.display="none";
+
+const startyping = () => {
+    document.getElementById("typing").style.display="";
+}
+   
+const stoptyping = () =>{
+  document.getElementById("typing").style.display="none";
+}
+
 const incomingchat = (text) => {
     if(text.length){
     var msg = document.getElementById("chat-body");
@@ -11,6 +21,7 @@ const incomingchat = (text) => {
     msg.insertAdjacentHTML("beforend",msgdiv);
     updateScroll();
     document.getElementById("chat-msg").value="";
+    stoptyping();
     }
 }
 
@@ -23,8 +34,8 @@ const outgoingchat = (text) => {
     msg.insertAdjacentHTML("beforeEnd",msgdiv);
     updateScroll();
     document.getElementById("chat-msg").value="";
+    startyping();
     }
-    stoptyping();
 }
 
 var sendbtn=document.getElementById("sendbtn");
@@ -47,16 +58,6 @@ sendbtn.addEventListener("click",function(e)
 
 
 function updateScroll(){
-    console.log("called");
     var element = document.getElementById("chat-log");
     element.scrollTop = element.scrollHeight;
-    stoptyping();
-}
-
-const startyping = () => {
- document.getElementById("typing").style.display="";
-}
-
-const stoptyping = () =>{
- document.getElementById("typing").style.display="none";
 }

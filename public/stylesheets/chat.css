@@ -182,36 +182,41 @@ body {
   position: absolute;
   background: #F9FBFF;
   width: 100%;
+  max-width:100%;
   opacity: 0.85;
   top: 60px;
   height: 80%;
 }
 
 .incoming {
+  display: block;
   float:left;
   text-align: left;
   width: 80%;
   max-width: 80%;
-  height: 100%;
+  height: auto;
   padding-bottom: 3px;
   padding-left: 10px;
 }
 .incoming .bubble {
   background: #b2b2b2;
+  max-width: inherit !important;
 }
 
 .outgoing {
+  display: block;
   float:right;
   text-align: right;
   padding-bottom: 3px;
   padding-right: 10px;
+  height: auto;
   width: 80%;
   max-width: 80%;
-  height: 100%;
 }
 .outgoing .bubble {
   background: #79C7C5;
   float: right;
+  max-width: inherit !important;
 }
 
 .typing {
@@ -353,6 +358,7 @@ footer a:hover {
 #chat-log{
   position: absolute;
   overflow-y:auto;
+  max-width:100%;
   max-height:84%;
 }
 
