@@ -1,13 +1,8 @@
-// declare const $ : any;
 
-// $(".person").on('click', function(){
-//     $(this).toggleClass('focus').siblings().removeClass('focus');
-// })
 
-// document.getElementsByClassName('person').addEventListener('click',function(e){
-//     var id=e.currentTarget;
-//     id.toggleClass("focus").siblings().removeClass('focus');
-// })
+$(".person").on('click', function(){
+    $(this).toggleClass('focus').siblings().removeClass('focus');
+})
 
 
 const incomingchat = (text) => {
