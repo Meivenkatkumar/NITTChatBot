@@ -191,6 +191,7 @@ body {
   float:left;
   text-align: left;
   width: 80%;
+  max-width: 80%;
   height: 100%;
   padding-bottom: 3px;
   padding-left: 10px;
@@ -205,6 +206,7 @@ body {
   padding-bottom: 3px;
   padding-right: 10px;
   width: 80%;
+  max-width: 80%;
   height: 100%;
 }
 .outgoing .bubble {
@@ -345,6 +347,7 @@ footer a:hover {
 }
 .chat-wrap{
   width:100%;
+  max-width: 150px;
   display: block;
 }
 #chat-log{
@@ -374,4 +377,11 @@ footer a:hover {
 
 #chat-log::-webkit-scrollbar-thumb:active {
   background: linear-gradient(left, #22ADD4, #1E98BA);
+}
+
+#sendbtn{
+  background-color: rgba(0,0,0,0);
+}
+.paper-plane{
+  color:#1E98BA;
 }

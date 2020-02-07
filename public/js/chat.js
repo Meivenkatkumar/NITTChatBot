@@ -1,14 +1,6 @@
-// declare const $ : any;
-
-// $(".person").on('click', function(){
-//     $(this).toggleClass('focus').siblings().removeClass('focus');
-// })
-
-// document.getElementsByClassName('person').addEventListener('click',function(e){
-//     var id=e.currentTarget;
-//     id.toggleClass("focus").siblings().removeClass('focus');
-// })
-
+$(".person").on('click', function(){
+    $(this).toggleClass('focus').siblings().removeClass('focus');
+})
 
 const incomingchat = (text) => {
     if(text.length){
@@ -32,17 +24,19 @@ const outgoingchat = (text) => {
     updateScroll();
     document.getElementById("chat-msg").value="";
     }
+    stoptyping();
 }
 
 var sendbtn=document.getElementById("sendbtn");
 document.getElementById("chat-msg").addEventListener("keydown",function(e)
 {
-   
+
     if(e.keyCode==13){
         const text = document.getElementById("chat-msg").value;
         outgoingchat(text);
+        text.value="";
     }
-    text.value="";
+    
 })
 sendbtn.addEventListener("click",function(e)
 {
@@ -56,4 +50,13 @@ function updateScroll(){
     console.log("called");
     var element = document.getElementById("chat-log");
     element.scrollTop = element.scrollHeight;
+    stoptyping();
+}
+
+const startyping = () => {
+ document.getElementById("typing").style.display="";
+}
+
+const stoptyping = () =>{
+ document.getElementById("typing").style.display="none";
 }
