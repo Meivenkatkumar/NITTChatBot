@@ -1,4 +1,5 @@
 //jshint esversion:6
+<<<<<<< HEAD
 const express= require("express");
 const app=express();
 const routes= require("./routes/index.js");
@@ -32,6 +33,17 @@ manager.addAnswer('en', 'greetings.hello', 'Greetings!');
 })();
 
 
+=======
+
+//NodeModules
+const express = require("express");
+const app= express();
+
+//Schemas
+const TrainingSet = require("./models/TrainingSet");
+
+const routes = require("./routes/index.js");
+>>>>>>> a9eaa61f4dd608d93b9f4f93b2be234969a35c76
 
 
 app.use("/",routes);
