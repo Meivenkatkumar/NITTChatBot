@@ -11,4 +11,5 @@ adminPanel = (req,res) =>{
 
 module.exports={
   displayHelloWorld,
+  adminPanel
 };
