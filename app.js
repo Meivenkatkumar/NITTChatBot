@@ -56,6 +56,9 @@ app.get("/home",function(req,res){
    res.render("home");
 })
 
+app.get("/chatbot",function(req,res){
+  res.render("chat");
+})
 
 app.listen(3000,()=>{
   console.log("LISTENING IN PORT 3000");

@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheets/chat.css">
     <title>NITT ChatBot</title>
 </head>
 <body>
     <div class="container">
-        <div class="chatbox">
+        <div id="chat" class="chatbox">
           <div class="top-bar">
             <div class="avatar"><p>V</p></div>
-            <div class="name">Voldemort</div>
+            <div id="username" class="name">ChatBot</div>
             <div class="icons">
               <i class="fas fa-phone"></i>
               <i class="fas fa-video"></i>
@@ -20,29 +21,27 @@
               <div class="dots"></div>
             </div>
           </div>
-          <div class="middle">
+          <div id="chat-middle" class="middle">
             <div class="voldemort">
+             <div id="chat-log">
               <div class="incoming">
                 <div class="bubble">Hey, Father's Day is coming up..</div>
-                <div class="bubble">What are you getting.. Oh, oops sorry dude.</div>
+                <div class="bubble">What are u getting.. Oh, oops sorry dude.</div>
               </div>
-              <div class="outgoing">
-                <div class="bubble lower">Nah, it's cool.</div>
-                <div class="bubble">Well you should get your Dad a cologne. Here smell it. Oh wait! ...</div>
-              </div>
-              <div class="typing">
-                <div class="bubble">
-                  <div class="ellipsis one"></div>
-                  <div class="ellipsis two"></div>
-                  <div class="ellipsis three"></div>
-                </div>
-              </div>
+             </div>
+             <div class="typing">
+               <div class="bubble">
+                 <div class="ellipsis one"></div>
+                 <div class="ellipsis two"></div>
+                 <div class="ellipsis three"></div>
+               </div>
+             </div>
             </div>
           </div>
           <div class="bottom-bar">
             <div class="chat">
-              <input type="text" placeholder="Type a message..." />
-              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+              <input  id="chat-msg" type="text" placeholder="Type a message..." />
+              <button type="submit" id="sendbtn"><i class="fas fa-paper-plane"></i></button>
             </div>
           </div>
         </div>
@@ -70,4 +69,5 @@
         </ul>
       </div>
 </body>
+<script src="/js/chat.js"></script>
 </html>
