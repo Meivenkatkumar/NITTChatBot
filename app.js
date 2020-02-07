@@ -35,18 +35,18 @@ manager.addAnswer('en', 'greetings.hello', 'Greetings!');
 })();
 
 
-=======
-
-//NodeModules
-
-
-
-
-
-
-
 
 app.use("/",routes);
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine","ejs");
+
+
+app.get("/home",function(req,res){
+   res.render("home");
+})
 
 
 app.listen(3000,()=>{
