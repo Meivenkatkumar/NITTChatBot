@@ -1,9 +1,17 @@
 //jshint esversion:6
+
 //Node modules
-const express= require("express");
-const app=express();
+const express = require("express");
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+mongoose.connect('mongodb://localhost:27017/finalProject', {useNewUrlParser: true});
+
+
 const routes= require("./routes/index.js");
 const { NlpManager } = require('node-nlp');
+
+
 //Schemas
 const TrainingSet = require("./models/TrainingSet");
 
@@ -35,12 +43,12 @@ manager.addAnswer('en', 'greetings.hello', 'Greetings!');
 })();
 
 
-
+app.set("view engine","ejs");    
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/",routes);
-
 app.use(express.static(__dirname + '/public'));
-
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/public'));
 app.set("view engine","ejs");
 
 

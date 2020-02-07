@@ -12,6 +12,9 @@ router.get('/',(req,res,next)=>{
   rootController.displayHelloWorld(req,res,next);
 });
 
+router.get("/admin", (req,res) => {
+  rootController.adminPanel(req,res);
+});
 
 router.get('/about', function (req, res) {
   res.send('About');
