@@ -1,9 +1,11 @@
 //jshint esversion:6
-<<<<<<< HEAD
+//Node modules
 const express= require("express");
 const app=express();
 const routes= require("./routes/index.js");
 const { NlpManager } = require('node-nlp');
+//Schemas
+const TrainingSet = require("./models/TrainingSet");
 
 const manager = new NlpManager({ languages: ['en'] });
 // Adds the utterances and intents for the NLP
@@ -36,14 +38,12 @@ manager.addAnswer('en', 'greetings.hello', 'Greetings!');
 =======
 
 //NodeModules
-const express = require("express");
-const app= express();
 
-//Schemas
-const TrainingSet = require("./models/TrainingSet");
 
-const routes = require("./routes/index.js");
->>>>>>> a9eaa61f4dd608d93b9f4f93b2be234969a35c76
+
+
+
+
 
 
 app.use("/",routes);
