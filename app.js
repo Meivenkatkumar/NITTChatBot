@@ -1,7 +1,13 @@
 //jshint esversion:6
-const express= require("express");
-const app=express();
-const routes= require("./routes/index.js");
+
+//NodeModules
+const express = require("express");
+const app= express();
+
+//Schemas
+const TrainingSet = require("./models/TrainingSet");
+
+const routes = require("./routes/index.js");
 
 
 app.use("/",routes);
