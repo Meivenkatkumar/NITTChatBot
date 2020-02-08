@@ -2,6 +2,7 @@
 const TrainingSet = require("../models/TrainingSet");
 const { getResponseObjectFromBot,trainFromDB }= require("../trainFromDB");
 
+
 displayHelloWorld = (req,res,next)=>{
   res.send("HELLO WORLD");
 };
@@ -20,7 +21,7 @@ createIntent = async (req,res) => {
          var temp1 = req.body.questions ? req.body.questions:[];
          var temp2 = req.body.answers ? req.body.answers:[];
          var createdSet = await TrainingSet.create({intent:req.body.intent, trainingPhrase: temp1, answer: temp2});
-          trainFromDB(); 
+          trainFromDB();
          console.log(createdSet);
       }else{
          var temp1 = foundSet.trainingPhrase;

@@ -35,7 +35,7 @@ const incomingchat = (text) => {
 const incomingImage =() =>{
   var msg = document.getElementById("chat-log");
   var msgdiv= `<div class="incoming image">`;
-  msgdiv += `<img src="/images/NITT_MAP.jpeg" width="80%" height="50%"  alt="hello">`;
+  msgdiv += `<iframe src="http://localhost:3000/map/" width="100%" height="400px" ></iframe>`;
   msgdiv += `</div>`;
   msg.insertAdjacentHTML("beforeEnd",msgdiv);
   updateScroll();
@@ -136,3 +136,14 @@ function speak(text) {
   console.log("this is speech");
 	window.speechSynthesis.speak(msg);
 }
+
+function gps(){
+ if (navigator.geolocation) {
+   navigator.geolocation.getCurrentPosition(showPosition);
+ }
+}
+function showPosition(position) {
+  console.log(position.coords.latitude, position.coords.longitude);
+}
+
+gps();

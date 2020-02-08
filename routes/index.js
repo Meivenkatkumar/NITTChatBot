@@ -43,8 +43,10 @@ router.post("/chatbot/sendMessage", async function(req,res){
 
 });
 
+router.get("/map", (req, res) => {
+   res.render("map");
+});
 
 
-router.ge
 
 module.exports = router;
