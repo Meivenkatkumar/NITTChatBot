@@ -23,27 +23,27 @@
     var j=0;
     function addTrainingContent()
     {
-        var item1 = document.createElement('input');
-        item1.setAttribute('id', 'listName'+i); 
-        item1.setAttribute('name','listItem'+i);
+        var trainingItem = document.createElement('input');
+        trainingItem.setAttribute('id', 'train'+i); 
+        trainingItem.setAttribute('name','train'+i);
 
-        var breakele = document.createElement('br');
+        var breakelem = document.createElement('br');
         var div = document.getElementById('training-content');
-        div.appendChild(item1);   
-        div.appendChild(breakele);
+        div.appendChild(trainingItem);   
+        div.appendChild(breakelem);
         i++;
     }
 
     function addAnswerContent()
     {
-        var item = document.createElement('input');
-        item.setAttribute('id', 'ansName'+j); 
-        item.setAttribute('name','ansItem'+j);
+        var answerItem = document.createElement('input');
+        answerItem.setAttribute('id', 'answer'+j); 
+        answerItem.setAttribute('name','answer'+j);
 
-        var breakele = document.createElement('br');
+        var breakelem = document.createElement('br');
         var div = document.getElementById('answer-content');
-        div.appendChild(item);   
-        div.appendChild(breakele);
+        div.appendChild(answerItem);   
+        div.appendChild(breakelem);
         j++;
     }
 
@@ -51,14 +51,14 @@
     {
      for(var i=0; i<3; i++)
      {
-         var ele = document.getElementById('listName'+i);
-        console.log(ele.value);
+         var element = document.getElementById('train'+i);
+        console.log(element.value);
      }
 
      for(var j=0; j<3; j++)
      {
-         var ele = document.getElementById('ansName'+j);
-        console.log(ele.value);
+         var element = document.getElementById('answer'+j);
+        console.log(element.value);
      }
 
     }
