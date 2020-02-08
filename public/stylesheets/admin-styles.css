@@ -6,7 +6,7 @@ html {
 body {
   background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
   /*font-family: "Lato", sans-serif;*/
-  font-family: 'Marck Script',cursive;
+font-family: "Lato", sans-serif;
 }
 
 #submitBtn
@@ -20,8 +20,8 @@ body {
   border-radius: 2px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-  font-family: 'Marck Script',cursive;
-  font-weight: bold;
+  font-family: 'Lato',cursive;
+  /*font-weight: bold;*/
   font-size:120%;
 }
 
@@ -63,7 +63,7 @@ h2{
     border: 1px solid #EEEEEE;
     box-shadow: 1px 1px 0 #DDDDDD;
     display: inline;
-    font-family: 'Marck Script',cursive;
+    font-family: 'Lato',cursive;
     font-size: 22px;
     line-height: 30px;
     margin-right: 2%;;
@@ -73,12 +73,12 @@ h2{
     /*width: 530px;*/
 }
 
-.inputClass 
+.inputClass
 {
     border: 1px solid #EEEEEE;
     box-shadow: 1px 1px 0 #DDDDDD;
     display: block;
-    font-family: 'Marck Script',cursive;
+    font-family: 'Lato',cursive;
     font-size: 22px;
     line-height: 30px;
     /*margin: 2% auto;*/

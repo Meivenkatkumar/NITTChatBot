@@ -8,6 +8,7 @@ const dataset = require("./dataset");
 
 const trainFromDB= async function(){
      try{
+       console.log("in here");
      let intentFromDB = await TrainingSet.find();
      let intentFromDataset = dataset.intents;
      let intents = intentFromDB.concat(intentFromDataset);

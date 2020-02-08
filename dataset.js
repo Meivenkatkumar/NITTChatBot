@@ -11,6 +11,16 @@ const dataset = {
      intent:"goodbye",
      answer:['Till next time','see you soon!']
    },
+   {
+     trainingPhrase:['what is festember?','pragyan','nittfest','sportsfete'],
+    intent:"fests",
+    answer:['fest of nitt','cultural fest']
+  },
+  {
+    trainingPhrase:['what is opal','what is agate','garnet','aquamarine','coral','diamond'],
+   intent:"hostels",
+   answer:["hostel of nitt",]
+ },
 
  ]
 };

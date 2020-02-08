@@ -1,6 +1,6 @@
 //jshint esversion:6
 const TrainingSet = require("../models/TrainingSet");
-const { getResponseObjectFromBot }= require("../trainFromDB");
+const { getResponseObjectFromBot,trainFromDB }= require("../trainFromDB");
 
 displayHelloWorld = (req,res,next)=>{
   res.send("HELLO WORLD");
@@ -20,6 +20,7 @@ createIntent = async (req,res) => {
          var temp1 = req.body.questions ? req.body.questions:[];
          var temp2 = req.body.answers ? req.body.answers:[];
          var createdSet = await TrainingSet.create({intent:req.body.intent, trainingPhrase: temp1, answer: temp2});
+          trainFromDB(); 
          console.log(createdSet);
       }else{
          var temp1 = foundSet.trainingPhrase;
@@ -38,6 +39,7 @@ createIntent = async (req,res) => {
           {
             if(req.body.answers[i] != "")
             {
+
               temp2.push(req.body.answers[i]);
             }
           }
@@ -45,6 +47,7 @@ createIntent = async (req,res) => {
 
         try{
          var updatedSet = await TrainingSet.findOneAndUpdate({intent:req.body.intent},{$set:{trainingPhrase:temp1,answer:temp2}});
+         trainFromDB();
         }
         catch(err)
         {

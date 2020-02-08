@@ -32,6 +32,9 @@ router.post("/chatbot/sendMessage", async function(req,res){
   console.log(req.body);
   const resp= await rootController.getResponseFromBot(req.body.msg);
   console.log(resp);
+  if(resp.intent==="None"){
+    res.send("Couldn't catch that? Repeat maybe?")
+  }
   res.send(resp.answer)
 });
 
