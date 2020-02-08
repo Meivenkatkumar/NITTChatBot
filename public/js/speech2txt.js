@@ -18,15 +18,16 @@ document.getElementById("voiceRecog").addEventListener("click",function(e)
       try{
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           speech1 = await event.results[i][0].transcript;
-          console.log(speech1);
           document.getElementById("recognise").innerHTML=speech1;
+
         }
       }catch(err){
-        console.log("Please try again!");
-      }  
-    } 
-    setTimeout(function(){
-       recognition.stop(); 
-    }, 5000);   
-})
 
+        console.log("Please try again!");
+      }
+    }
+    setTimeout(function(){
+       recognition.stop();
+        makeRequest(speech1);
+    }, 5000);
+})
