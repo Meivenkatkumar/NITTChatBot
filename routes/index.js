@@ -16,6 +16,10 @@ router.get("/admin", (req,res) => {
   rootController.adminPanel(req,res);
 });
 
+router.post("/admin/createIntent", (req,res) => {
+  rootController.createIntent(req,res);
+});
+
 router.get('/about', function (req, res) {
   res.send('About');
 });
@@ -26,4 +30,4 @@ router.get("/chatbot",function(req,res){
 
 router.ge
 
-module.exports=router;
+module.exports = router;
