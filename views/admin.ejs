@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel</title>
-    <link href="stylesheets/admin-styles.css">
+    <link rel= "stylesheet" href="/stylesheets/admin-styles.css">
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -15,22 +15,30 @@
     <div id='adminContainer'>
     <input type='text' id='intentName' placeholder='Enter Intent'> <button id="submitBtn" onclick="submit(); return false">Save</button>
     <br/><br/>
-    <h2>Training Set</h2><button id="train-addbutton" onclick="addTrainingContent(); return false">+</button>
+    <h2>Training Set</h2><button id="train-addbutton" onclick="addTrainingContent()">+</button>
     <br/>
-    <h2>Training set</h2>
-    <div id="training-content"></div>
-    <h2>Answer Array</h2>
-    <div id="answer-content"></div>
-
-    <button id="submitBtn" onclick="submit();">Save</button>
+    <br/>
+    <div id="training-content">
+        <input id='train0' class='inputClass' placeholder='Training Input'>
+    <br/>
+    </div>
+    <h2>Response Set</h2><button id="answer-addbutton" onclick="addAnswerContent()">+</button>
+    <br/>
+    <br/>
+    <div id="answer-content">
+        <input id='answer0' class='inputClass' placeholder='Response Input'>
+    <br/>
+    </div>
 <script>
-    var  que = 0;
-    var  ans = 0;
+    var  que = 1;
+    var  ans = 1;
     function addTrainingContent()
     {
         var trainingItem = document.createElement('input');
         trainingItem.setAttribute('id', 'train'+que); 
         trainingItem.setAttribute('name','train'+que);
+        trainingItem.className = 'inputClass';
+
         var breakelem = document.createElement('br');
         var div = document.getElementById('training-content');
         div.appendChild(trainingItem);   
@@ -42,7 +50,7 @@
         var answerItem = document.createElement('input');
         answerItem.setAttribute('id', 'answer'+ans); 
         answerItem.setAttribute('name','answer'+ans);
-
+        answerItem.className = 'inputClass';
         var breakelem = document.createElement('br');
         var div = document.getElementById('answer-content');
         div.appendChild(answerItem);   
