@@ -1,42 +1,67 @@
-var synth = window.speechSynthesis;
-
-var inputForm = document.querySelector('form');
-var inputTxt = document.querySelector('input');
-var voiceSelect = document.querySelector('select');
-
-
-function populateVoiceList() {
-  voices = synth.getVoices();
-
-  for(i = 0; i < voices.length ; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+// Fetch the list of voices and populate the voice options.
+function loadVoices() {
+  // Fetch the available voices.
+	var voices = speechSynthesis.getVoices();
+  
+  // Loop through each of the voices.
+	voices.forEach(function(voice, i) {
+    // Create a new option element.
+		var option = document.createElement('option');
     
-    if(voices[i].default) {
-      option.textContent += ' -- DEFAULT';
-    }
+    // Set the options value and text.
+		option.value = voice.name;
+		option.innerHTML = voice.name;
+		  
+    // Add the option to the voice selector.
+		voiceSelect.appendChild(option);
+	});
+}
 
-    option.setAttribute('data-lang', voices[i].lang);
-    option.setAttribute('data-name', voices[i].name);
-    voiceSelect.appendChild(option);
+// Execute loadVoices.
+loadVoices();
+
+// Chrome loads voices asynchronously.
+window.speechSynthesis.onvoiceschanged = function(e) {
+  loadVoices();
+};
+
+
+// Create a new utterance for the specified text and add it to
+// the queue.
+function speak(text) {
+  // Create a new instance of SpeechSynthesisUtterance.
+	var msg = new SpeechSynthesisUtterance();
+  
+  // Set the text.
+	msg.text = text;
+  
+  // Set the attributes.
+	msg.volume = 1;
+	msg.rate = 1;
+	msg.pitch = 1;
+  // If a voice has been selected, find the voice and set the
+  // utterance instance's voice attribute.
+	msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == "Google UK English Female"; })[0];
+  // Queue this utterance.
+	window.speechSynthesis.speak(msg);
+}
+
+
+// Set up an event listener for when the 'speak' button is clicked.
+// button.addEventListener('click', function(e) {
+// 	if (speechMsgInput.value.length > 0) {
+// 		speak(speechMsgInput.value);
+// 	}
+// });
+
+const speak = async (text) => {
+  if(text.length>0){
+    try{
+      await speak(text);
+    }catch(err){
+      console.log("Couldnt you please try again!");
+    }
   }
 }
 
-populateVoiceList();
-if (speechSynthesis.onvoiceschanged !== undefined) {
-  speechSynthesis.onvoiceschanged = populateVoiceList;
-}
-
-inputForm.onsubmit = function(event) {
-  event.preventDefault();
-
-  var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-  var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-  for(i = 0; i < voices.length ; i++) {
-    if(voices[i].name === selectedOption) {
-      utterThis.voice = voices[i];
-    }
-  }
-  synth.speak(utterThis);
-  inputTxt.blur();
-}
+module.exports.speak = speak;
