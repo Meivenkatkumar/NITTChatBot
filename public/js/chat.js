@@ -136,14 +136,3 @@ function speak(text) {
   console.log("this is speech");
 	window.speechSynthesis.speak(msg);
 }
-
-function gps(){
- if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(showPosition);
- }
-}
-function showPosition(position) {
-  console.log(position.coords.latitude, position.coords.longitude);
-}
-
-gps();
