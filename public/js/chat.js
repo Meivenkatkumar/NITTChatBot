@@ -1,24 +1,31 @@
-// declare const $ : any;
+$(".person").on('click', function(){
+    $(this).toggleClass('focus').siblings().removeClass('focus');
+})
 
-// $(".person").on('click', function(){
-//     $(this).toggleClass('focus').siblings().removeClass('focus');
-// })
+document.getElementById("typing").style.display="none";
 
-// document.getElementsByClassName('person').addEventListener('click',function(e){
-//     var id=e.currentTarget;
-//     id.toggleClass("focus").siblings().removeClass('focus');
-// })
-
+const startyping = () => {
+    var chatlog = document.getElementById("chat-log");
+    var content = `<div id="typing" class="outgoing typing"><div class="bubble"><div class="ellipsis one"></div><div class="ellipsis two"></div><div class="ellipsis three"></div></div></div>`;
+    chatlog.insertAdjacentHTML("beforeEnd",content);
+    // document.getElementById("typing").style.display="";
+}
+   
+const stoptyping = () =>{
+//   document.getElementById("typing").style.display="none";
+$( "#typing" ).remove();
+}
 
 const incomingchat = (text) => {
     if(text.length){
-    var msg = document.getElementById("chat-body");
+    var msg = document.getElementById("chat-log");
     var msgdiv= `<div class="incoming">`;
     msgdiv += `<div class="bubble">`+text+`</div>`;
     msgdiv += `</div>`;
-    msg.insertAdjacentHTML("beforend",msgdiv);
+    msg.insertAdjacentHTML("beforeEnd",msgdiv);
     updateScroll();
     document.getElementById("chat-msg").value="";
+    stoptyping();
     }
 }
 
@@ -29,20 +36,22 @@ const outgoingchat = (text) => {
     msgdiv += `<div class="bubble">`+text+`</div>`;
     msgdiv += `</div>`;
     msg.insertAdjacentHTML("beforeEnd",msgdiv);
-    updateScroll();
     document.getElementById("chat-msg").value="";
+    updateScroll();
+    startyping();
     }
 }
 
 var sendbtn=document.getElementById("sendbtn");
 document.getElementById("chat-msg").addEventListener("keydown",function(e)
 {
-   
+
     if(e.keyCode==13){
         const text = document.getElementById("chat-msg").value;
         outgoingchat(text);
+        text.value="";
     }
-    text.value="";
+    
 })
 sendbtn.addEventListener("click",function(e)
 {
@@ -53,7 +62,6 @@ sendbtn.addEventListener("click",function(e)
 
 
 function updateScroll(){
-    console.log("called");
     var element = document.getElementById("chat-log");
     element.scrollTop = element.scrollHeight;
 }

@@ -182,34 +182,42 @@ body {
   position: absolute;
   background: #F9FBFF;
   width: 100%;
+  max-width:100%;
   opacity: 0.85;
   top: 60px;
   height: 80%;
 }
 
 .incoming {
+  /* display: block; */
   float:left;
   text-align: left;
   width: 80%;
-  height: 100%;
+  max-width: 80%;
+  height: auto;
   padding-bottom: 3px;
   padding-left: 10px;
 }
 .incoming .bubble {
   background: #b2b2b2;
+  max-width: inherit !important;
+  height: auto;
 }
 
 .outgoing {
+  /* display: block; */
   float:right;
   text-align: right;
   padding-bottom: 3px;
   padding-right: 10px;
+  height: auto;
   width: 80%;
-  height: 100%;
+  max-width: 80%;
 }
 .outgoing .bubble {
   background: #79C7C5;
-  float: right;
+  max-width: inherit !important;
+  height: auto;
 }
 
 .typing {
@@ -220,6 +228,7 @@ body {
 .typing .bubble {
   background: #eaeaea;
   padding: 8px 13px 9px 13px;
+  float:left;
 }
 
 .ellipsis {
@@ -244,13 +253,14 @@ body {
 }
 
 .bubble {
-  position: relative;
-  display: inline-block;
+  /* position: relative; */
+  display: inline-block ;
   margin-bottom: 5px;
   color: #F9FBFF;
   font-size: 0.7em;
   padding: 10px 10px 10px 12px;
   border-radius: 20px;
+  word-wrap: break-word;
 }
 
 .lower {
@@ -343,13 +353,14 @@ footer a:hover {
     opacity: 0.5;
   }
 }
-.chat-wrap{
-  width:100%;
-  display: block;
-}
+
 #chat-log{
+  display: block;
   position: absolute;
   overflow-y:auto;
+  overflow-x:hidden; 
+  /* max-width:inherit !important; */
+  max-width: 100%;
   max-height:84%;
 }
 
@@ -374,4 +385,11 @@ footer a:hover {
 
 #chat-log::-webkit-scrollbar-thumb:active {
   background: linear-gradient(left, #22ADD4, #1E98BA);
+}
+
+#sendbtn{
+  background-color: rgba(0,0,0,0);
+}
+.paper-plane{
+  color:#1E98BA;
 }
