@@ -14,7 +14,7 @@ const dataset = {
    {
      trainingPhrase:['what is festember?','pragyan','nittfest','sportsfete'],
     intent:"fests",
-    answer:['fest of nitt','cultural fest']
+    answer:['fest of nitt']
   },
   {
     trainingPhrase:['what is opal','what is agate','garnet','aquamarine','coral','diamond'],
@@ -29,7 +29,5 @@ const dataset = {
 
  ]
 };
-
-
 
 module.exports = dataset;
