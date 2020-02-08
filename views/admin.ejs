@@ -4,64 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin Panel</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Enter Intent :</h1> <input type='text' id='intentName'>
     <br/>
-    <button id="button" onclick="addTrainingContent(); return false">Add in Training</button>
+    <button id="button" onclick="addTrainingContent();">Add in Training</button>
     <h2>Training set</h2>
     <div id="training-content"></div>
 
-    <button id="button" onclick="addAnswerContent(); return false">Add in Answers</button>
+    <button id="button" onclick="addAnswerContent();">Add in Answers</button>
     <h2>Answer Array</h2>
     <div id="answer-content"></div>
 
-    <button id="submitBtn" onclick="submit(); return false">Save</button>
+    <button id="submitBtn" onclick="submit();">Save</button>
 <script>
-    var i=0;
-    var j=0;
+    var  que = 0;
+    var  ans = 0;
     function addTrainingContent()
     {
         var trainingItem = document.createElement('input');
-        trainingItem.setAttribute('id', 'train'+i); 
-        trainingItem.setAttribute('name','train'+i);
+        trainingItem.setAttribute('id', 'train'+que); 
+        trainingItem.setAttribute('name','train'+que);
 
         var breakelem = document.createElement('br');
         var div = document.getElementById('training-content');
         div.appendChild(trainingItem);   
         div.appendChild(breakelem);
-        i++;
+        que++;
     }
 
     function addAnswerContent()
     {
         var answerItem = document.createElement('input');
-        answerItem.setAttribute('id', 'answer'+j); 
-        answerItem.setAttribute('name','answer'+j);
+        answerItem.setAttribute('id', 'answer'+ans); 
+        answerItem.setAttribute('name','answer'+ans);
 
         var breakelem = document.createElement('br');
         var div = document.getElementById('answer-content');
         div.appendChild(answerItem);   
         div.appendChild(breakelem);
-        j++;
+        ans++;
     }
 
-    function submit()
+    async function submit()
     {
-     for(var i=0; i<3; i++)
-     {
-         var element = document.getElementById('train'+i);
-        console.log(element.value);
-     }
+         
+        var questions = [];
+        var answers = [];
+        console.log(que);
+        for(i = 0;i < que;i++){
+            questions.push(document.querySelector(`#train${i}`).value)
+        }
 
-     for(var j=0; j<3; j++)
-     {
-         var element = document.getElementById('answer'+j);
-        console.log(element.value);
-     }
+        for(j = 0;j < ans;j++){
+            answers.push(document.querySelector(`#answer${j}`).value)
+        }
+        var intent = document.querySelector('#intentName').value;
+       
+        var url = `/admin/createIntent`;
+        var request = $.ajax({
+              url:url,
+              type:'POST',
+              data:{intent:intent, questions:questions, answers:answers},
+              dataType: "html" 
+         }
+        );
+        request.done(function(msg){
+            console.log(msg);
+        });
+        request.fail(function(jqXHR, textStatus){
+           console.log("Request failed")
+        });
 
     }
 </script>
+
 </body>
 </html>

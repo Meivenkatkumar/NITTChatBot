@@ -47,10 +47,10 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/",routes);
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname + '/public'));
 app.set("view engine","ejs");
-
+app.use(express.json({
+  type: ['application/json', 'text/plain']
+}))
 
 app.get("/home",function(req,res){
    res.render("home");
