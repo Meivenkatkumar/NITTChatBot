@@ -1,5 +1,6 @@
 //jshint esversion:6
 const TrainingSet = require("../models/TrainingSet");
+const { getResponseObjectFromBot }= require("../trainFromDB");
 
 displayHelloWorld = (req,res,next)=>{
   res.send("HELLO WORLD");
@@ -27,7 +28,7 @@ createIntent = async (req,res) => {
           for(i = 0;i < req.body.questions.length;i++)
           {
               if(req.body.questions[i] != "")
-              { 
+              {
                   temp1.push(req.body.questions[i]);
               }
           }
@@ -41,7 +42,7 @@ createIntent = async (req,res) => {
             }
           }
         }
-          
+
         try{
          var updatedSet = await TrainingSet.findOneAndUpdate({intent:req.body.intent},{$set:{trainingPhrase:temp1,answer:temp2}});
         }
@@ -56,11 +57,28 @@ createIntent = async (req,res) => {
      console.log(err);
      res.status(400).jsonp({"message":"Failure"})
 
-   }  
+   }
 };
+
+
+getResponseFromBot= async (msg) =>{
+  try{
+    const response = await getResponseObjectFromBot(msg)
+    return(response);
+  }
+  catch(err){
+    console.log(err);
+  }
+
+
+}
+
+
+
 
 module.exports={
   displayHelloWorld,
   adminPanel,
-  createIntent
+  createIntent,
+  getResponseFromBot
 };

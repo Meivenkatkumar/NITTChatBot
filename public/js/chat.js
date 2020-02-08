@@ -10,7 +10,7 @@ const startyping = () => {
     chatlog.insertAdjacentHTML("beforeEnd",content);
     // document.getElementById("typing").style.display="";
 }
-   
+
 const stoptyping = () =>{
 //   document.getElementById("typing").style.display="none";
 $( "#typing" ).remove();
@@ -29,16 +29,47 @@ const incomingchat = (text) => {
     }
 }
 
-const outgoingchat = (text) => {
+
+const makeRequest = (msg) =>{
+  console.log(msg);
+  if(!msg || msg===''){
+    return "Please type something"
+  }else{
+ console.log(msg);
+    var request = $.ajax({
+  url: "/chatbot/sendMessage",
+  type: "POST",
+  data: {msg : msg},
+  dataType: "html"
+});
+
+request.done(function(response) {
+  stoptyping();
+  incomingchat(response);
+
+});
+
+request.fail(function(jqXHR, textStatus) {
+  alert( "Request failed: " + textStatus );
+});
+  }
+}
+
+
+const outgoingchat =   (text) => {
     if(text.length){
     var msg = document.getElementById("chat-log");
     var msgdiv= `<div class="outgoing">`;
     msgdiv += `<div class="bubble">`+text+`</div>`;
     msgdiv += `</div>`;
     msg.insertAdjacentHTML("beforeEnd",msgdiv);
-    document.getElementById("chat-msg").value="";
+
     updateScroll();
     startyping();
+    console.log(document.getElementById("chat-msg"));
+   makeRequest(document.getElementById("chat-msg").value);
+     document.getElementById("chat-msg").value="";
+
     }
 }
 
@@ -51,7 +82,7 @@ document.getElementById("chat-msg").addEventListener("keydown",function(e)
         outgoingchat(text);
         text.value="";
     }
-    
+
 })
 sendbtn.addEventListener("click",function(e)
 {

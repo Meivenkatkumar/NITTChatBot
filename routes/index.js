@@ -28,6 +28,15 @@ router.get("/chatbot",function(req,res){
   res.render("chat");
 });
 
+router.post("/chatbot/sendMessage", async function(req,res){
+  console.log(req.body);
+  const resp= await rootController.getResponseFromBot(req.body.msg);
+  console.log(resp);
+  res.send(resp.answer)
+});
+
+
+
 router.ge
 
 module.exports = router;
