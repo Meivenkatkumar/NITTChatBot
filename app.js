@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-mongoose.connect('mongodb://localhost:27017/finalProject', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/finalProject', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const routes= require("./routes/index.js");
 
@@ -45,6 +45,12 @@ app.set("view engine","ejs");
 
 
 app.listen(3000, async ()=>{
-  await trainFromDB();
-  console.log("LISTENING IN PORT 3000");
+  try{
+    await trainFromDB();
+    console.log("LISTENING IN PORT 3000");
+  }
+  catch(err){
+    console.log(err);
+  }
+
 });
