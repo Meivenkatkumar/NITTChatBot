@@ -1,3 +1,4 @@
+const speak = require('txt2speech.js').speak;
 $(".person").on('click', function(){
     $(this).toggleClass('focus').siblings().removeClass('focus');
 })
@@ -26,6 +27,7 @@ const incomingchat = (text) => {
     updateScroll();
     document.getElementById("chat-msg").value="";
     stoptyping();
+    speak(text);
     }
 }
 
@@ -67,9 +69,8 @@ const outgoingchat =   (text) => {
     updateScroll();
     startyping();
     console.log(document.getElementById("chat-msg"));
-   makeRequest(document.getElementById("chat-msg").value);
-     document.getElementById("chat-msg").value="";
-
+    makeRequest(document.getElementById("chat-msg").value);
+    document.getElementById("chat-msg").value="";
     }
 }
 
