@@ -7,6 +7,7 @@ const dataset = require("./dataset");
 
 
 const trainFromDB= async function(){
+     try{
      let intentFromDB = await TrainingSet.find();
      let intentFromDataset = dataset.intents;
      let intents = intentFromDB.concat(intentFromDataset);
@@ -20,13 +21,23 @@ const trainFromDB= async function(){
      });
      await manager.train();
      manager.save();
-
+   }
+   catch(err){
+     console.log(err);
+   }
 };
 
 
 const getResponseObjectFromBot = async function (query) {
-  const response = await manager.process('en', 'I should go now');
-  return response;
+  try{
+    const response = await manager.process('en', 'I should go now');
+    return response;
+  }
+  catch(err) {
+    console.log(err);
+    return(err);
+  }
+
 }
 
 
