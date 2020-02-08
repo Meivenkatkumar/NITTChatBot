@@ -12,19 +12,20 @@ document.getElementById("voiceRecog").addEventListener("click",function(e)
 
     }
     const context = '<div class="incoming"><div id="recognise" class="bubble"></div></div>';
-    // var chatlog = document.getElementById("chat-log");
-    // chatlog.insertAdjacentElement("beforeEnd", context);
     $("#chat-log").append(context);
     recognition.start();
-    recognition.onresult = function(event) {
-      for (var i = event.resultIndex; i < event.results.length; ++i) {
-        console.log(event.results[i][0].transcript); 
-        speech1 = event.results[i][0].transcript;
-        if(speech1!=speech){
-            speech=speech1;
-            document.getElementById("recognise").innerHTML=speech1;
+    recognition.onresult = async (event) => {
+      try{
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          speech1 = await event.results[i][0].transcript;
+          document.getElementById("recognise").innerHTML=speech1;
         }
+      }catch(err){
+        console.log("Please try again!");
       }  
-    }    
+    } 
+    setTimeout(function(){
+       recognition.stop(); 
+    }, 5000);   
 })
-document.getElementById("recognise").removeAttribute("id");
+
