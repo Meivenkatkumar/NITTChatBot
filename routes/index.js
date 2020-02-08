@@ -20,6 +20,10 @@ router.get('/about', function (req, res) {
   res.send('About');
 });
 
+router.get("/chatbot",function(req,res){
+  res.render("chat");
+});
 
+router.ge
 
 module.exports=router;
