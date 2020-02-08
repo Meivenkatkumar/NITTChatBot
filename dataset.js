@@ -21,6 +21,11 @@ const dataset = {
    intent:"hostels",
    answer:["hostel of nitt",]
  },
+ {
+   trainingPhrase:["where am i, where is orion","where is LHC","give me the NITT map","map"],
+   intent:"NITT_MAP",
+   answer:["NITT MAP"]
+ }
 
  ]
 };

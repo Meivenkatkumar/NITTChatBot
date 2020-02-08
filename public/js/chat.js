@@ -29,6 +29,18 @@ const incomingchat = (text) => {
     }
 }
 
+const incomingImage =() =>{
+  var msg = document.getElementById("chat-log");
+  var msgdiv= `<div class="incoming image">`;
+  msgdiv += `<img src="/images/NITT_MAP.jpeg" width="80%" height="50%"  alt="hello">`;
+  msgdiv += `</div>`;
+  msg.insertAdjacentHTML("beforeEnd",msgdiv);
+  updateScroll();
+  document.getElementById("chat-msg").value="";
+  stoptyping();
+
+}
+
 
 const makeRequest = (msg) =>{
   console.log(msg);
@@ -45,7 +57,12 @@ const makeRequest = (msg) =>{
 
 request.done(function(response) {
   stoptyping();
+  if(response[0]!="/"){
   incomingchat(response);
+}else{
+  incomingImage();
+}
+
 
 });
 

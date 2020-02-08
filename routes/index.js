@@ -34,8 +34,13 @@ router.post("/chatbot/sendMessage", async function(req,res){
   console.log(resp);
   if(resp.intent==="None"){
     res.send("Couldn't catch that? Repeat maybe?")
+  }else if(resp.intent==="NITT_MAP"){
+    res.send("/images/NITT_MAP.jpg");
+  }else{
+      res.send(resp.answer)
   }
-  res.send(resp.answer)
+
+
 });
 
 
