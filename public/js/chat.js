@@ -1,4 +1,3 @@
-const speak = require('txt2speech.js').speak;
 $(".person").on('click', function(){
     $(this).toggleClass('focus').siblings().removeClass('focus');
 })
@@ -27,7 +26,9 @@ const incomingchat = (text) => {
     updateScroll();
     document.getElementById("chat-msg").value="";
     stoptyping();
+    console.log("speak will bee= starting");
     speak(text);
+    console.log("soeak shoudl have been over");
     }
 }
 
@@ -96,4 +97,25 @@ sendbtn.addEventListener("click",function(e)
 function updateScroll(){
     var element = document.getElementById("chat-log");
     element.scrollTop = element.scrollHeight;
+}
+
+// Create a new utterance for the specified text and add it to
+// the queue.
+function speak(text) {
+  // Create a new instance of SpeechSynthesisUtterance.
+	var msg = new SpeechSynthesisUtterance();
+
+  // Set the text.
+	msg.text = text;
+
+  // Set the attributes.
+	msg.volume = 1;
+	msg.rate = 1;
+	msg.pitch = 1;
+  // If a voice has been selected, find the voice and set the
+  // utterance instance's voice attribute.
+	msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == "Google UK English Female"; })[0];
+  // Queue this utterance.
+  console.log("this is speech");
+	window.speechSynthesis.speak(msg);
 }
