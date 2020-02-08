@@ -33,7 +33,7 @@ router.post("/chatbot/sendMessage", async function(req,res){
   const resp= await rootController.getResponseFromBot(req.body.msg);
   console.log(resp);
   if(resp.intent==="None"){
-    res.send("Couldn't catch that? Repeat maybe?")
+    res.send("Couldn't catch that... Repeat maybe?")
   }else if(resp.intent==="NITT_MAP"){
     res.send("/images/NITT_MAP.jpg");
   }else{
