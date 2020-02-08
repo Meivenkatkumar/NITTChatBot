@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+html {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
+  /*font-family: "Lato", sans-serif;*/
+  font-family: 'Marck Script',cursive;
+}
+
+#submitBtn
+{
+  width: 80px;
+  text-transform: uppercase;
+  padding: 3px 15px;
+  color: black;
+  background-color: #8bc34a;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  font-family: 'Marck Script',cursive;
+  font-weight: bold;
+  font-size:120%;
+}
+
+#train-addbutton
+{
+  width: 40px;
+  text-transform: uppercase;
+  padding: 3px 15px;
+  color: white;
+  background-color: #00bcd4;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  font-size:120%;
+}
+
+#answer-addbutton
+{
+  width: 40px;
+  text-transform: uppercase;
+  padding: 3px 15px;
+  color: white;
+  background-color: #00bcd4;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  font-size:120%;
+}
+
+h2{
+    display: inline;
+    margin-right:20px;
+}
+
+#intentName
+{
+    border: 1px solid #EEEEEE;
+    box-shadow: 1px 1px 0 #DDDDDD;
+    display: inline;
+    font-family: 'Marck Script',cursive;
+    font-size: 22px;
+    line-height: 30px;
+    margin-right: 2%;;
+    padding: 11px 20px 10px 20px;
+    resize: none;
+    /*height: 40px;*/
+    /*width: 530px;*/
+}
+
+.inputClass 
+{
+    border: 1px solid #EEEEEE;
+    box-shadow: 1px 1px 0 #DDDDDD;
+    display: block;
+    font-family: 'Marck Script',cursive;
+    font-size: 22px;
+    line-height: 30px;
+    /*margin: 2% auto;*/
+    padding: 11px 20px 10px 20px;
+    resize: none;
+    /*height: 40px;*/
+    width: 530px;
+}
+
+#adminContainer
+{
+    margin: 10%;
+}

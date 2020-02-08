@@ -5,62 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/admin-styles.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Enter Intent :</h1> <input type='text' id='intentName'>
+    <div id='adminContainer'>
+    <input type='text' id='intentName' placeholder='Enter Intent'> <button id="submitBtn" onclick="submit(); return false">Save</button>
+    <br/><br/>
+    <h2>Training Set</h2><button id="train-addbutton" onclick="addTrainingContent(); return false">+</button>
     <br/>
-    <button id="button" onclick="addTrainingContent(); return false">Add in Training</button>
-    <h2>Training set</h2>
-    <div id="training-content"></div>
-
-    <button id="button" onclick="addAnswerContent(); return false">Add in Answers</button>
-    <h2>Answer Array</h2>
-    <div id="answer-content"></div>
-
-    <button id="submitBtn" onclick="submit(); return false">Save</button>
+    <br/>
+    <div id="training-content">
+        <input id="train0" name="train0" class='inputClass' placeholder='Training Input'><br/>
+    </div>
+    <br/>
+    <h2>Response Set</h2><button id="answer-addbutton" onclick="addAnswerContent(); return false">+</button>
+    <br/>
+    <br/>
+    <div id="answer-content">
+        <input id="answer0" name="answer0" class='inputClass' placeholder='Response Input'><br/>
+    </div>
+    <br/>
+    </div>
 <script>
-    var i=0;
-    var j=0;
+    var  que = 0;
+    var  ans = 0;
     function addTrainingContent()
     {
         var trainingItem = document.createElement('input');
-        trainingItem.setAttribute('id', 'train'+i); 
-        trainingItem.setAttribute('name','train'+i);
-
+        trainingItem.setAttribute('id', 'train'+que); 
+        trainingItem.setAttribute('name','train'+que);
+        trainingItem.className = 'inputClass';
         var breakelem = document.createElement('br');
         var div = document.getElementById('training-content');
         div.appendChild(trainingItem);   
         div.appendChild(breakelem);
-        i++;
+        que++;
     }
-
     function addAnswerContent()
     {
         var answerItem = document.createElement('input');
-        answerItem.setAttribute('id', 'answer'+j); 
-        answerItem.setAttribute('name','answer'+j);
+        answerItem.setAttribute('id', 'answer'+ans); 
+        answerItem.setAttribute('name','answer'+ans);
+        answerItem.className = 'inputClass';
 
         var breakelem = document.createElement('br');
         var div = document.getElementById('answer-content');
         div.appendChild(answerItem);   
         div.appendChild(breakelem);
-        j++;
+        ans++;
     }
-
-    function submit()
+    async function submit()
     {
-     for(var i=0; i<3; i++)
-     {
-         var element = document.getElementById('train'+i);
-        console.log(element.value);
-     }
-
-     for(var j=0; j<3; j++)
-     {
-         var element = document.getElementById('answer'+j);
-        console.log(element.value);
-     }
-
+         
+        var questions = [];
+        var answers = [];
+        console.log(que);
+        for(i = 0;i < que;i++){
+            questions.push(document.querySelector(`#train${i}`).value)
+        }
+        for(j = 0;j < ans;j++){
+            answers.push(document.querySelector(`#answer${j}`).value)
+        }
+        var intent = document.querySelector('#intentName').value;
+       
+        var url = `/admin/createIntent`;
+        var request = $.ajax({
+              url:url,
+              type:'POST',
+              data:{intent:intent, questions:questions, answers:answers},
+              dataType: "html" 
+         }
+        );
+        request.done(function(msg){
+            console.log(msg);
+        });
+        request.fail(function(jqXHR, textStatus){
+           console.log("Request failed")
+        });
     }
 </script>
 </body>
