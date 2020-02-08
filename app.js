@@ -5,6 +5,8 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+// console.log("entry");
+const passs="Meiven212!";
 mongoose.connect('mongodb://localhost:27017/finalProject', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const routes= require("./routes/index.js");
