@@ -7,6 +7,61 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>Hello</h3>>
+    <h1>Enter Intent :</h1> <input type='text' id='intentName'>
+    <br/>
+    <button id="button" onclick="addTrainingContent(); return false">Add in Training</button>
+    <h2>Training set</h2>
+    <div id="training-content"></div>
+
+    <button id="button" onclick="addAnswerContent(); return false">Add in Answers</button>
+    <h2>Answer Array</h2>
+    <div id="answer-content"></div>
+
+    <button id="submitBtn" onclick="submit(); return false">Save</button>
+<script>
+    var i=0;
+    var j=0;
+    function addTrainingContent()
+    {
+        var trainingItem = document.createElement('input');
+        trainingItem.setAttribute('id', 'train'+i); 
+        trainingItem.setAttribute('name','train'+i);
+
+        var breakelem = document.createElement('br');
+        var div = document.getElementById('training-content');
+        div.appendChild(trainingItem);   
+        div.appendChild(breakelem);
+        i++;
+    }
+
+    function addAnswerContent()
+    {
+        var answerItem = document.createElement('input');
+        answerItem.setAttribute('id', 'answer'+j); 
+        answerItem.setAttribute('name','answer'+j);
+
+        var breakelem = document.createElement('br');
+        var div = document.getElementById('answer-content');
+        div.appendChild(answerItem);   
+        div.appendChild(breakelem);
+        j++;
+    }
+
+    function submit()
+    {
+     for(var i=0; i<3; i++)
+     {
+         var element = document.getElementById('train'+i);
+        console.log(element.value);
+     }
+
+     for(var j=0; j<3; j++)
+     {
+         var element = document.getElementById('answer'+j);
+        console.log(element.value);
+     }
+
+    }
+</script>
 </body>
 </html>
