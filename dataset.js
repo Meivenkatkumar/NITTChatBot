@@ -1,4 +1,8 @@
 //jshint esversion:6
+const fs = require('fs');
+
+let rawdata = require('./output.json');
+
 const dataset = {
   intents:[
     {
@@ -30,6 +34,9 @@ const dataset = {
  ]
 };
 
-
+for(i = 0;i < rawdata.length;i++)
+{
+  dataset.intents.push(rawdata[i]);
+}
 
 module.exports = dataset;
